@@ -10,7 +10,7 @@ Adds the application to the share menu of the device, so it can be launched from
 npm i --save react-native-share-menu
 ```
 
-* In `android/setting.gradle`
+* In `android/settings.gradle`
 
 ```gradle
 ...
@@ -54,8 +54,7 @@ import React, {
   AppRegistry,
   Component,
   Text,
-  View,
-  NativeModules
+  View
 } from 'react-native';
 import ShareMenu from 'react-native-share-menu';
 
