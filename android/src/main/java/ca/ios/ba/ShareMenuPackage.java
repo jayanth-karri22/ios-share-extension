@@ -13,17 +13,14 @@ import com.facebook.react.uimanager.ViewManager;
 import ca.ios.ba.ShareMenuModule;
 
 public class ShareMenuPackage implements ReactPackage {
-  private String inputText;
-
-  public ShareMenuPackage(String _inputText) {
+  public ShareMenuPackage() {
     super();
-    this.inputText = _inputText;
   }
 
   @Override
   public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
     List<NativeModule> modules = new ArrayList<>();
-    modules.add(new ShareMenuModule(reactContext, getInputText()));
+    modules.add(new ShareMenuModule(reactContext));
     return modules;
   }
 
@@ -35,9 +32,5 @@ public class ShareMenuPackage implements ReactPackage {
   @Override
   public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
     return Collections.emptyList();
-  }
-
-  public String getInputText() {
-    return inputText;
   }
 }

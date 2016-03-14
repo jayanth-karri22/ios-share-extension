@@ -11,12 +11,11 @@ import ca.ios.ba.ShareMenuPackage;
 
 import java.util.Map;
 
-public class ShareMenuModule extends ReactContextBaseJavaModule {
-  private String inputText;
+import android.content.Intent;
 
-  public ShareMenuModule(ReactApplicationContext reactContext, String _inputText) {
+public class ShareMenuModule extends ReactContextBaseJavaModule {
+  public ShareMenuModule(ReactApplicationContext reactContext) {
     super(reactContext);
-    this.inputText = _inputText;
   }
 
   @Override
@@ -24,13 +23,12 @@ public class ShareMenuModule extends ReactContextBaseJavaModule {
     return "ShareMenu";
   }
 
-  public String getInputText() {
-    return inputText;
-  }
-
   @ReactMethod
   public void getSharedText(Callback successCallback) {
-    successCallback.invoke(getInputText());
-    this.inputText = null;
+    Intent intent = getIntent();
+    String action = intent.getAction();
+    String type = intent.getType();
+    String inputText = intent.getStringExtra(Intent.EXTRA_TEXT);
+    successCallback.invoke(inputText);
   }
 }
