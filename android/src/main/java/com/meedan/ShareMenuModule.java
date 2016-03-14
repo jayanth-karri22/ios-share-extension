@@ -1,4 +1,4 @@
-package ca.ios.ba;
+package com.meedan;
 
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -7,7 +7,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
 
-import ca.ios.ba.ShareMenuPackage;
+import com.meedan.ShareMenuPackage;
 
 import java.util.Map;
 

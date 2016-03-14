@@ -1,4 +1,4 @@
-package ca.ios.ba;
+package com.meedan;
 
 import android.app.Activity;
 
@@ -10,7 +10,7 @@ import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 
-import ca.ios.ba.ShareMenuModule;
+import com.meedan.ShareMenuModule;
 
 public class ShareMenuPackage implements ReactPackage {
   public ShareMenuPackage() {

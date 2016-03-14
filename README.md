@@ -31,7 +31,7 @@ dependencies {
 * Register module (in MainActivity.java)
 
 ```java
-import ca.ios.ba.ShareMenuPackage;  // <--- import
+import com.meedan.ShareMenuPackage;  // <--- import
 
 public class MainActivity extends ReactActivity {
   ......
