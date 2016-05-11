@@ -28,7 +28,7 @@ dependencies {
 }
 ```
 
-* In `android/src/main/AndroidManifest.xml`
+* In `android/app/src/main/AndroidManifest.xml`
 
 ```xml
 <intent-filter>
@@ -98,9 +98,11 @@ class Test extends Component {
 AppRegistry.registerComponent('Test', () => Test);
 ```
 
+Or check the "example" directory for an example application.
+
 ## How it looks
 
-<img src="https://raw.githubusercontent.com/caiosba/react-native-share-menu/master/screenshots/menu.png" width="47%"> <img src="https://raw.githubusercontent.com/caiosba/react-native-share-menu/master/screenshots/android.png" width="47%">
+<img src="https://raw.githubusercontent.com/caiosba/react-native-share-menu/master/screenshots/android-menu.png" width="47%"> <img src="https://raw.githubusercontent.com/caiosba/react-native-share-menu/master/screenshots/android-app.png" width="47%">
 
 ## Credits
 
