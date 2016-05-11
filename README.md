@@ -10,6 +10,8 @@ Adds the application to the share menu of the device, so it can be launched from
 npm i --save react-native-share-menu
 ```
 
+## Usage in Android
+
 * In `android/settings.gradle`
 
 ```gradle
@@ -55,6 +57,16 @@ public class MainActivity extends ReactActivity {
   ......
 
 }
+```
+
+## Usage in iOS
+
+In the share extension `loadView()` method, add:
+
+```Objective-c
+NSExtensionItem *item = self.extensionContext.inputItems.firstObject;
+NSItemProvider *itemProvider = item.attachments.firstObject;
+[ShareMenuModule setShareMenuModule_itemProvider:itemProvider];
 ```
 
 ## Example
