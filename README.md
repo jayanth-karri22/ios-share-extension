@@ -28,6 +28,16 @@ dependencies {
 }
 ```
 
+* In `android/src/main/AndroidManifest.xml`
+
+```xml
+<intent-filter>
+   <action android:name="android.intent.action.SEND" />
+   <category android:name="android.intent.category.DEFAULT" />
+   <data android:mimeType="text/plain" />
+</intent-filter>
+```
+
 * Register module (in MainActivity.java)
 
 ```java
@@ -39,7 +49,7 @@ public class MainActivity extends ReactActivity {
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
       new MainReactPackage(),
-      new ShareMenuPackage()  // <------ add here     
+      new ShareMenuPackage(this)  // <------ add here
     );
   }
   ......
