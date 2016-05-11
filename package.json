@@ -1,10 +1,10 @@
 {
   "name": "react-native-share-menu",
   "description": "Adds the app to share menu, so it can be launched from share menu and receive data from other apps",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/caiosba/react-native-share-menu.git"
+    "url": "git+https://github.com/meedan/react-native-share-menu.git"
   },
   "keywords": [
     "react-component",
@@ -13,8 +13,8 @@
     "share"
   ],
   "author": {
-    "name": "Caio Almeida",
-    "email": "caiosba@gmail.com"
+    "name": "Meedan",
+    "email": "hello@meedan.com"
   },
   "license": "MIT",
   "readmeFilename": "README.md"
