@@ -35,7 +35,7 @@ Choose the share extension target, then open with Safari
 <img src="https://raw.githubusercontent.com/meedan/react-native-share-menu/master/example/ios/screenshots/step_run.png" width="90%">
 
 You may get the following error
-```
+```objc
 Undefined symbols for architecture x86_64:
 "_OBJC_CLASS_$_RCTRootView", referenced from:
 objc-class-ref in ShareViewController.o
@@ -47,10 +47,14 @@ Open ShareExtension target and add the missed linked frameworks and libraries
 
 
 You may get the following error 
-```App Transport Security has blocked a cleartext HTTP (http://) resource load since it is insecure. Temporary exceptions can be configured via your app's Info.plist file.```
+```objc
+App Transport Security has blocked a cleartext HTTP (http://) resource load since it is insecure. Temporary exceptions can be configured via your app's Info.plist file.
+```
 
 You may get the following error
-```-[RCTRootView reactTag]: unrecognized selector sent to instance 0x7f8900d35510```
+```objc
+-[RCTRootView reactTag]: unrecognized selector sent to instance 0x7f8900d35510
+```
 Open ShareExtension target settings >> Build Settings: Add `-ObjC` to `Other linker flags`
 
 3- Using ShareMenuModule
@@ -61,7 +65,7 @@ NSItemProvider *itemProvider = item.attachments.firstObject;
 [ShareMenuModule setShareMenuModule_itemProvider:itemProvider];```
 c) From `index.js.ios`
 You can get the shared url using 
-```
+```objc
 NativeModules.ShareMenuModule.getSharedText((text :string) => {
 if (text && text.length) {
 that.setState({ sharedText: text });
@@ -126,4 +130,4 @@ AppRegistry.registerComponent('ExampleApp', () => ExampleApp);
 ```
 ## How it looks
 
-<img src="https://raw.githubusercontent.com/caiosba/react-native-share-menu/master/screenshots/iOS_menu.png" width="47%"> <img src="https://raw.githubusercontent.com/caiosba/react-native-share-menu/master/screenshots/iOS_view.png" width="47%">
+<img src="https://raw.githubusercontent.com/meedan/react-native-share-menu/master/screenshots/iOS_menu.png" width="47%"> <img src="https://raw.githubusercontent.com/meedan/react-native-share-menu/master/screenshots/iOS_view.png" width="47%">
