@@ -34,7 +34,7 @@ d) Run!
 Choose the share extension target, then open with Safari
 <img src="https://raw.githubusercontent.com/meedan/react-native-share-menu/master/example/ios/screenshots/step_run.png" width="90%">
 
-You may get the following error
+<b>You may get the following error</b>
 ```objc
 Undefined symbols for architecture x86_64:
 "_OBJC_CLASS_$_RCTRootView", referenced from:
@@ -46,12 +46,12 @@ Open ShareExtension target and add the missed linked frameworks and libraries
 <img src="https://raw.githubusercontent.com/meedan/react-native-share-menu/master/example/ios/screenshots/step_linker.png" width="90%">
 
 
-You may get the following error 
+<b>You may get the following error </b>
 ```objc
 App Transport Security has blocked a cleartext HTTP (http://) resource load since it is insecure. Temporary exceptions can be configured via your app's Info.plist file.
 ```
 
-You may get the following error
+<b>You may get the following error </b>
 ```objc
 -[RCTRootView reactTag]: unrecognized selector sent to instance 0x7f8900d35510
 ```
