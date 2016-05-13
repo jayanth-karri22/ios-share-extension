@@ -1,19 +1,21 @@
-React Native Share Extension
+## How to use the module 
 
 1- Create new react native project 
-Open terminal and write react-native init ExampleApp
+Open terminal and write `react-native init ExampleApp`
 
 2- Init the share extension target
 a) From Project Settings, add new share extension target
-
+<img src="https://raw.githubusercontent.com/meedan/react-native-share-menu/master/example/ios/screenshots/step2_1.png" width="90%">
+<img src="https://raw.githubusercontent.com/meedan/react-native-share-menu/master/example/ios/screenshots/step2_2.png" width="90%">
+<img src="https://raw.githubusercontent.com/meedan/react-native-share-menu/master/example/ios/screenshots/step2_3.png" width="90%">
 b) From `ShareViewController.h`: Remove  `: SLComposeServiceViewController` and replace it with `: UIViewController`
 
 c) Remove the content of `ShareViewController.m` and add the implementation of `loadView` method 
 You can get the content of the loadView from the `AppDelegate`
-```
+```objc
 #import "RCTRootView.h"
 ```
-```
+```objc
 - (void) loadView
 {
 NSURL *jsCodeLocation;
@@ -29,15 +31,20 @@ self.view = rootView;
 ```
 
 d) Run!
+Choose the share extension target, then open with Safari
+<img src="https://raw.githubusercontent.com/meedan/react-native-share-menu/master/example/ios/screenshots/step_run.png" width="90%">
 
 You may get the following error
-```Undefined symbols for architecture x86_64:
+```
+Undefined symbols for architecture x86_64:
 "_OBJC_CLASS_$_RCTRootView", referenced from:
 objc-class-ref in ShareViewController.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 ```
 Open ShareExtension target and add the missed linked frameworks and libraries 
+<img src="https://raw.githubusercontent.com/meedan/react-native-share-menu/master/example/ios/screenshots/step_linker.png" width="90%">
+
 
 You may get the following error 
 ```App Transport Security has blocked a cleartext HTTP (http://) resource load since it is insecure. Temporary exceptions can be configured via your app's Info.plist file.```
@@ -117,3 +124,6 @@ margin: 80
 
 AppRegistry.registerComponent('ExampleApp', () => ExampleApp);
 ```
+## How it looks
+
+<img src="https://raw.githubusercontent.com/caiosba/react-native-share-menu/master/screenshots/iOS_menu.png" width="47%"> <img src="https://raw.githubusercontent.com/caiosba/react-native-share-menu/master/screenshots/iOS_view.png" width="47%">
