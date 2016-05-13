@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 import {
+  NativeModules,
   AppRegistry,
   StyleSheet,
   Text,
@@ -13,41 +14,38 @@ import {
 } from 'react-native';
 
 class ExampleApp extends Component {
+  constructor(props) {
+    super(props); 
+    this.state = {
+      sharedText: null
+    };
+  }
+  componentWillMount() {
+    var that = this;
+    NativeModules.ShareMenuModule.getSharedText((text :string) => {
+      if (text && text.length) {
+        that.setState({ sharedText: text });
+
+      }
+    })
+  }
+
+  
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
+    
+    var text = this.state.sharedText;
+ 	return <Text style={styles.text}>Shared text: {text}</Text>;
+
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    text: {
+    color: 'black',
+    backgroundColor: 'white',
+    fontSize: 30,
+    margin: 80
+  }
 });
 
 AppRegistry.registerComponent('ExampleApp', () => ExampleApp);
