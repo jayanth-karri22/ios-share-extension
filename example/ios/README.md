@@ -56,6 +56,26 @@ App Transport Security has blocked a cleartext HTTP (http://) resource load sinc
 -[RCTRootView reactTag]: unrecognized selector sent to instance 0x7f8900d35510
 ```
 Open ShareExtension target settings >> Build Settings: Add `-ObjC` to `Other linker flags`
+```objc
+Undefined symbols for architecture x86_64:
+  "std::terminate()", referenced from:
+      ___clang_call_terminate in libReact.a(RCTJSCExecutor.o)
+  "___cxa_begin_catch", referenced from:
+      ___clang_call_terminate in libReact.a(RCTJSCExecutor.o)
+  "___gxx_personality_v0", referenced from:
+      -[RCTJavaScriptContext initWithJSContext:onThread:] in libReact.a(RCTJSCExecutor.o)
+      -[RCTJavaScriptContext init] in libReact.a(RCTJSCExecutor.o)
+      -[RCTJavaScriptContext invalidate] in libReact.a(RCTJSCExecutor.o)
+      _RCTNSErrorFromJSError in libReact.a(RCTJSCExecutor.o)
+      +[RCTJSCExecutor runRunLoopThread] in libReact.a(RCTJSCExecutor.o)
+      -[RCTJSCExecutor init] in libReact.a(RCTJSCExecutor.o)
+      -[RCTJSCExecutor context] in libReact.a(RCTJSCExecutor.o)
+      ...
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+```
+Open ShareExtension target settings >> Build Settings: Add `-lc++` to `Other linker flags`
+
 
 3- Using ShareMenuModule
 Download and add `ShareMenuModule.h` and `ShareMenuModule.m`
