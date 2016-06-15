@@ -10,4 +10,5 @@
 #import "RCTBridgeModule.h"
 @interface ShareMenuModule : NSObject<RCTBridgeModule>
 +(void) setShareMenuModule_itemProvider: (NSItemProvider*) itemProvider;
++(void) setContext: (NSExtensionContext*) context;
 @end
