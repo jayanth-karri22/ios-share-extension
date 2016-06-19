@@ -12,6 +12,8 @@
 #import <RCTLog.h>
 @implementation ShareMenuModule
 static NSItemProvider* ShareMenuModule_itemProvider;
+static NSExtensionContext* extContext;
+
 RCT_EXPORT_MODULE();
 RCT_EXPORT_METHOD(getSharedText:(RCTResponseSenderBlock)callback)
 {
@@ -24,8 +26,19 @@ RCT_EXPORT_METHOD(getSharedText:(RCTResponseSenderBlock)callback)
   // callback(@[[NSNull null], [[NSUserDefaults standardUserDefaults] objectForKey:@"self.url"]]);
 }
 
+RCT_EXPORT_METHOD(invokeToTheHostApp)
+{
+  
+  [ extContext completeRequestReturningItems: @[] completionHandler: nil ];
+}
+
 +(void) setShareMenuModule_itemProvider: (NSItemProvider*) itemProvider
 {
   ShareMenuModule_itemProvider = itemProvider;
+}
+
++(void) setContext: (NSExtensionContext*) context
+{
+  extContext = context;
 }
 @end

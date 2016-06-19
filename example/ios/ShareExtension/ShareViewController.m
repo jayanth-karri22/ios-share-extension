@@ -22,6 +22,7 @@
   NSExtensionItem *item = self.extensionContext.inputItems.firstObject;
   NSItemProvider *itemProvider = item.attachments.firstObject;
   [ShareMenuModule setShareMenuModule_itemProvider:itemProvider];
+  [ShareMenuModule setContext: self.extensionContext];
 
   jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
  
