@@ -67,6 +67,7 @@ In the share extension `loadView()` method, add:
 NSExtensionItem *item = self.extensionContext.inputItems.firstObject;
 NSItemProvider *itemProvider = item.attachments.firstObject;
 [ShareMenuModule setShareMenuModule_itemProvider:itemProvider];
+[ShareMenuModule setContext: self.extensionContext];
 ```
 
 ## Example
