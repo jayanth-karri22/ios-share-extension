@@ -15,11 +15,9 @@ import android.app.Activity;
 import android.content.Intent;
 
 public class ShareMenuModule extends ReactContextBaseJavaModule {
-  private Activity mActivity = null;
 
-  public ShareMenuModule(ReactApplicationContext reactContext, Activity activity) {
+  public ShareMenuModule(ReactApplicationContext reactContext) {
     super(reactContext);
-    mActivity = activity;
   }
 
   @Override
@@ -29,6 +27,7 @@ public class ShareMenuModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void getSharedText(Callback successCallback) {
+    Activity mActivity = getCurrentActivity();
     Intent intent = mActivity.getIntent();
     String action = intent.getAction();
     String type = intent.getType();
