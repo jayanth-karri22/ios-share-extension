@@ -13,17 +13,15 @@ import com.facebook.react.uimanager.ViewManager;
 import com.meedan.ShareMenuModule;
 
 public class ShareMenuPackage implements ReactPackage {
-  private Activity mActivity = null;
 
-  public ShareMenuPackage(Activity activity) {
+  public ShareMenuPackage() {
     super();
-    mActivity = activity;
   }
 
   @Override
   public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
     List<NativeModule> modules = new ArrayList<>();
-    modules.add(new ShareMenuModule(reactContext, mActivity));
+    modules.add(new ShareMenuModule(reactContext));
     return modules;
   }
 
