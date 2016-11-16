@@ -117,6 +117,10 @@ Or check the "example" directory for an example application.
 
 <img src="https://raw.githubusercontent.com/caiosba/react-native-share-menu/master/screenshots/android-menu.png" width="47%"> <img src="https://raw.githubusercontent.com/caiosba/react-native-share-menu/master/screenshots/android-app.png" width="47%">
 
+## Releasing a new version
+
+`$ npm version <minor|major|patch> && npm publish`
+
 ## Credits
 
 Sponsored and developed by [Meedan](http://meedan.com).
