@@ -34,4 +34,11 @@ public class ShareMenuModule extends ReactContextBaseJavaModule {
     String inputText = intent.getStringExtra(Intent.EXTRA_TEXT);
     successCallback.invoke(inputText);
   }
+
+  @ReactMethod
+  public void clearSharedText() {
+    Activity mActivity = getCurrentActivity();
+    Intent intent = mActivity.getIntent();
+    intent.removeExtra(Intent.EXTRA_TEXT);
+  }
 }
