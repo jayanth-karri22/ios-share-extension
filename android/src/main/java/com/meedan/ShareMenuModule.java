@@ -29,8 +29,6 @@ public class ShareMenuModule extends ReactContextBaseJavaModule {
   public void getSharedText(Callback successCallback) {
     Activity mActivity = getCurrentActivity();
     Intent intent = mActivity.getIntent();
-    String action = intent.getAction();
-    String type = intent.getType();
     String inputText = intent.getStringExtra(Intent.EXTRA_TEXT);
     successCallback.invoke(inputText);
   }
