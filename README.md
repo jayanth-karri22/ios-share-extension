@@ -12,6 +12,16 @@ npm i --save react-native-share-menu
 
 ## Usage in Android
 
+### Automatic Installation (React Native 0.36+)
+
+At the command line, in the project directory:
+
+```bash
+react-native link
+```
+
+### Manual Installation
+
 * In `android/settings.gradle`
 
 ```gradle
