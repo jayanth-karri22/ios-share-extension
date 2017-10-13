@@ -10,6 +10,7 @@ import com.facebook.react.bridge.Callback;
 import com.meedan.ShareMenuPackage;
 
 import java.util.Map;
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -42,6 +43,17 @@ public class ShareMenuModule extends ReactContextBaseJavaModule {
         Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
         successCallback.invoke(imageUri.toString());
       }
+    } else if (Intent.ACTION_SEND_MULTIPLE.equals(action) && type != null) {
+        if (type.startsWith("image/")) {
+          ArrayList<Uri> imageUris = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+          if (imageUris != null) {
+            String completeString = new String();
+            for (Uri uri: imageUris) {
+              completeString += uri.toString() + ",";
+            }
+            successCallback.invoke(completeString);
+          }
+        }
     }
   }
 
