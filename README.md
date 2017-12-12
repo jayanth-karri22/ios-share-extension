@@ -61,7 +61,7 @@ public class MainApplication extends Application implements ReactApplication {
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
       new MainReactPackage(),
-      new ShareMenuPackage(this)  // <------ add here
+      new ShareMenuPackage()  // <------ add here
     );
   }
   ......

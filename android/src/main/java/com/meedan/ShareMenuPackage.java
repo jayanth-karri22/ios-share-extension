@@ -13,7 +13,6 @@ import com.facebook.react.uimanager.ViewManager;
 import com.meedan.ShareMenuModule;
 
 public class ShareMenuPackage implements ReactPackage {
-
   public ShareMenuPackage() {
     super();
   }
@@ -23,6 +22,11 @@ public class ShareMenuPackage implements ReactPackage {
     List<NativeModule> modules = new ArrayList<>();
     modules.add(new ShareMenuModule(reactContext));
     return modules;
+  }
+
+  @Override
+  public List<Class<? extends JavaScriptModule>> createJSModules() {
+    return Collections.emptyList();
   }
 
   @Override
