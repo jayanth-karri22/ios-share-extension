@@ -18,19 +18,31 @@
 - (void) loadView
 {
   NSURL *jsCodeLocation;
- 
+
   NSExtensionItem *item = self.extensionContext.inputItems.firstObject;
   NSItemProvider *itemProvider = item.attachments.firstObject;
   [ShareMenuModule setShareMenuModule_itemProvider:itemProvider];
   [ShareMenuModule setContext: self.extensionContext];
 
   jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
- 
+
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"ExampleApp"
                                                initialProperties:nil
                                                    launchOptions:nil];
   self.view = rootView;
+}
+
+// animate (IN)
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+
+  self.view.transform = CGAffineTransformMakeTranslation(0, self.view.frame.size.height);
+  [UIView animateWithDuration:0.25 animations:^
+   {
+     self.view.transform = CGAffineTransformIdentity;
+   }];
 }
 
 
