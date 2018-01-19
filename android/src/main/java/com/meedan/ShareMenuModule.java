@@ -12,14 +12,18 @@ import com.meedan.ShareMenuPackage;
 import java.util.Map;
 import java.util.ArrayList;
 
+import android.widget.Toast;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 
 public class ShareMenuModule extends ReactContextBaseJavaModule {
 
+  private ReactContext mReactContext;
+
   public ShareMenuModule(ReactApplicationContext reactContext) {
     super(reactContext);
+    mReactContext = reactContext;
   }
 
   @Override
@@ -38,10 +42,11 @@ public class ShareMenuModule extends ReactContextBaseJavaModule {
       if ("text/plain".equals(type)) {
         String input = intent.getStringExtra(Intent.EXTRA_TEXT);
         successCallback.invoke(input);
-      }
-      else if (type.startsWith("image/")) {
+      } else if (type.startsWith("image/")) {
         Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
         successCallback.invoke(imageUri.toString());
+      } else {
+        Toast.makeText(mReactContext, "Type is not support", Toast.LENGTH_SHORT).show();
       }
     } else if (Intent.ACTION_SEND_MULTIPLE.equals(action) && type != null) {
         if (type.startsWith("image/")) {
@@ -53,6 +58,8 @@ public class ShareMenuModule extends ReactContextBaseJavaModule {
             }
             successCallback.invoke(completeString);
           }
+        } else {
+          Toast.makeText(mReactContext, "Type is not support", Toast.LENGTH_SHORT).show();
         }
     }
   }
