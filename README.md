@@ -1,3 +1,5 @@
+*LOOKING FOR A VOLUNTEER TO MAINTAIN THE IOS VERSION, CURRENTLY UNMAINTAINED*
+
 # react-native-share-menu
 
 Adds the application to the share menu of the device, so it can be launched from other apps and receive data from them.
