@@ -31,6 +31,11 @@ public class ShareMenuModule extends ReactContextBaseJavaModule {
     return "ShareMenu";
   }
 
+  protected void onNewIntent(Intent intent) {
+    Activity mActivity = getCurrentActivity();
+    mActivity.setIntent(intent);
+  }  
+
   @ReactMethod
   public void getSharedText(Callback successCallback) {
     Activity mActivity = getCurrentActivity();

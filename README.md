@@ -1,3 +1,5 @@
+*LOOKING FOR A VOLUNTEER TO MAINTAIN THE IOS VERSION, CURRENTLY UNMAINTAINED*
+
 # react-native-share-menu
 
 Adds the application to the share menu of the device, so it can be launched from other apps and receive data from them.
@@ -40,7 +42,7 @@ dependencies {
 }
 ```
 
-* In `android/app/src/main/AndroidManifest.xml`
+* In `android/app/src/main/AndroidManifest.xml` in the `<activity>` tag:
 
 ```xml
 <intent-filter>
@@ -50,18 +52,18 @@ dependencies {
 </intent-filter>
 ```
 
-* Register module (in MainActivity.java)
+* Register module (in MainApplication.java)
 
 ```java
 import com.meedan.ShareMenuPackage;  // <--- import
 
-public class MainActivity extends ReactActivity {
+public class MainApplication extends Application implements ReactApplication {
   ......
   @Override
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
       new MainReactPackage(),
-      new ShareMenuPackage(this)  // <------ add here
+      new ShareMenuPackage()  // <------ add here
     );
   }
   ......
