@@ -49,7 +49,9 @@ public class ShareMenuModule extends ReactContextBaseJavaModule {
         successCallback.invoke(input);
       } else if (type.startsWith("image/")) {
         Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
-        successCallback.invoke(imageUri.toString());
+        if (imageUri != null) {
+          successCallback.invoke(imageUri.toString());
+        }
       } else {
         Toast.makeText(mReactContext, "Type is not support", Toast.LENGTH_SHORT).show();
       }
