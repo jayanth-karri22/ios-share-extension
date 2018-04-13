@@ -2,7 +2,7 @@
 
 # react-native-share-menu
 
-Adds the application to the share menu of the device, so it can be launched from other apps and receive data from them.
+Adds the application to the share menu of the device, so it can be launched from other apps and receive data from them (current text or images).
 
 ## Installation
 
@@ -49,6 +49,7 @@ dependencies {
    <action android:name="android.intent.action.SEND" />
    <category android:name="android.intent.category.DEFAULT" />
    <data android:mimeType="text/plain" />
+   <data android:mimeType="image/*" />
 </intent-filter>
 ```
 
@@ -97,7 +98,8 @@ class Test extends Component {
   constructor(props) {
     super(props); 
     this.state = {
-      sharedText: null
+      sharedText: null,
+      sharedImage: null
     };
   }
 
@@ -105,7 +107,11 @@ class Test extends Component {
     var that = this;
     ShareMenu.getSharedText((text :string) => {
       if (text && text.length) {
-        that.setState({ sharedText: text });
+        if (text.startsWith('content://media/')) {
+          that.setState({ sharedImage: text });
+        } else {
+          that.setState({ sharedText: text });
+        }
       }
     })
   }
