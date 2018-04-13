@@ -29,15 +29,12 @@ class ExampleApp extends Component {
       if (text && text.length) {
         that.setState({ sharedText: text });
       }
-
-
     });
   }
 
   _invoke() {
     this.ShareExtension.invokeToTheHostApp();
   }
-
 
   render() {
 
