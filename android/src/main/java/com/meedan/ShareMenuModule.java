@@ -33,12 +33,18 @@ public class ShareMenuModule extends ReactContextBaseJavaModule {
 
   protected void onNewIntent(Intent intent) {
     Activity mActivity = getCurrentActivity();
+    
+    if(mActivity == null) { return; }
+
     mActivity.setIntent(intent);
   }  
 
   @ReactMethod
   public void getSharedText(Callback successCallback) {
     Activity mActivity = getCurrentActivity();
+    
+    if(mActivity == null) { return; }
+    
     Intent intent = mActivity.getIntent();
     String action = intent.getAction();
     String type = intent.getType();
@@ -74,6 +80,9 @@ public class ShareMenuModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void clearSharedText() {
     Activity mActivity = getCurrentActivity();
+    
+    if(mActivity == null) { return; }
+
     Intent intent = mActivity.getIntent();
     String type = intent.getType();
     if ("text/plain".equals(type)) {
