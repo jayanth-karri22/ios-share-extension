@@ -45,12 +45,17 @@ dependencies {
 * In `android/app/src/main/AndroidManifest.xml` in the `<activity>` tag:
 
 ```xml
-<intent-filter>
-   <action android:name="android.intent.action.SEND" />
-   <category android:name="android.intent.category.DEFAULT" />
-   <data android:mimeType="text/plain" />
-   <data android:mimeType="image/*" />
-</intent-filter>
+<activity
+  ...
+  android:documentLaunchMode="never">
+  ...
+  <intent-filter>
+    <action android:name="android.intent.action.SEND" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <data android:mimeType="text/plain" />
+    <data android:mimeType="image/*" />
+  </intent-filter>
+</activity>
 ```
 
 * Register module (in MainApplication.java)
