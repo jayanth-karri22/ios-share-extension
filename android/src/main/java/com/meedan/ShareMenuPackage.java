@@ -17,7 +17,6 @@ public class ShareMenuPackage implements ReactPackage {
     super();
   }
 
-  @Override
   public List<Class<? extends JavaScriptModule>> createJSModules() {
     return Collections.emptyList();
   }
