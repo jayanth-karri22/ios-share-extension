@@ -26,6 +26,9 @@
             <category android:name="android.intent.category.DEFAULT" />
             <data android:mimeType="text/plain" />
             <data android:mimeType="image/*" />
+            <data android:mimeType="application/pdf" />
+            <data android:mimeType="audio/*" />
+            <!-- Add the mime types you want to support -->
         </intent-filter>
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
