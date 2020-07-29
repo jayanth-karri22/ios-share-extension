@@ -1,22 +1,3 @@
-// MARK: Error Messages
-
-let NO_URL_TYPES_ERROR_MESSAGE = "You have not defined CFBundleURLTypes in your Info.plist"
-let NO_URL_SCHEMES_ERROR_MESSAGE = "You have not defined CFBundleURLSchemes in your Info.plist"
-let NO_SCHEME_ERROR_MESSAGE = "You have not defined a scheme under CFBundleURLSchemes in your Info.plist"
-let NO_APP_GROUP_ERROR = "Failed to get App Group User Defaults. Did you set up an App Group on your App and Share Extension?"
-
-// MARK: Keys
-
-let USER_DEFAULTS_KEY = "ShareMenuUserDefaults"
-let URL_SCHEME_INFO_PLIST_KEY = "AppURLScheme"
-
-let MIME_TYPE_KEY =  "mimeType"
-let DATA_KEY =  "data"
-
-// MARK: Events
-
-let NEW_SHARE_EVENT = "NewShareEvent"
-
 @objc(ShareMenu)
 class ShareMenu: RCTEventEmitter {
 
@@ -52,7 +33,7 @@ class ShareMenu: RCTEventEmitter {
     }
 
     override static public func requiresMainQueueSetup() -> Bool {
-        return true
+        return false
     }
 
     open override func supportedEvents() -> [String]! {
@@ -108,22 +89,40 @@ class ShareMenu: RCTEventEmitter {
             return
         }
 
+        let extraData = userDefaults.object(forKey: USER_DEFAULTS_EXTRA_DATA_KEY) as? [String:Any]
+
         if let data = userDefaults.object(forKey: USER_DEFAULTS_KEY) as? [String:String] {
             sharedData = data
-            dispatchEvent(with: data)
+            dispatchEvent(with: data, and: extraData)
             userDefaults.removeObject(forKey: USER_DEFAULTS_KEY)
         }
     }
 
     @objc(getSharedText:)
     func getSharedText(callback: RCTResponseSenderBlock) {
-        callback([sharedData as Any])
+        guard var data: [String:Any] = sharedData else {
+            callback([])
+            return
+        }
+
+        if let bundleId = Bundle.main.bundleIdentifier, let userDefaults = UserDefaults(suiteName: "group.\(bundleId)") {
+            data[EXTRA_DATA_KEY] = userDefaults.object(forKey: USER_DEFAULTS_EXTRA_DATA_KEY) as? [String:Any]
+        } else {
+            print("Error: \(NO_APP_GROUP_ERROR)")
+        }
+
+        callback([data as Any])
         sharedData = nil
     }
     
-    func dispatchEvent(with data: [String:String]) {
+    func dispatchEvent(with data: [String:String], and extraData: [String:Any]?) {
         guard hasListeners else { return }
+
+        var finalData = data as [String:Any]
+        if (extraData != nil) {
+            finalData[EXTRA_DATA_KEY] = extraData
+        }
         
-        sendEvent(withName: NEW_SHARE_EVENT, body: data)
+        sendEvent(withName: NEW_SHARE_EVENT, body: finalData)
     }
 }
