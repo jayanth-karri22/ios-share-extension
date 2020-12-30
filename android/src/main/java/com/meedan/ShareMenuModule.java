@@ -93,7 +93,7 @@ public class ShareMenuModule extends ReactContextBaseJavaModule implements Activ
       return;
     }
 
-    //if this isn't the roor activity then make sure it is
+    // If this isn't the root activity then make sure it is
     if (!currentActivity.isTaskRoot()) {
       Intent newIntent = new Intent(currentActivity.getIntent());
       newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
