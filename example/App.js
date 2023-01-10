@@ -51,7 +51,7 @@ const App: () => React$Node = () => {
         Shared text: {sharedMimeType === 'text/plain' ? sharedData : ''}
       </Text>
       <Text style={styles.instructions}>Shared image:</Text>
-      {sharedMimeType.startsWith('image/') && (
+      {sharedMimeType?.startsWith('image/') && (
         <Image
           style={styles.image}
           source={{uri: sharedData}}
